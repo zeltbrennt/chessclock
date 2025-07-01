@@ -5,8 +5,6 @@
     let increment = $state(0);
     let timeA = $derived(minutes * 60);
     let timeB = $derived(minutes * 60);
-    let incrementA = $state(0);
-    let incrementB = $state(0);
     let activeA = $state(false);
     let activeB = $state(false);
     let countdownRunning = $state(false);
@@ -24,11 +22,11 @@
         if (which === "A") {
             activeA = true;
             activeB = false;
-            timeA += incrementA;
+            timeA += increment;
         } else {
             activeA = false;
             activeB = true;
-            timeB += incrementB;
+            timeB += increment;
         }
         interval = setInterval(() => {
             if (activeA && timeA > 0) {
@@ -83,14 +81,22 @@
         {countdownRunning}
     />
     <div class="flex flex-row">
-        <input disabled={countdownRunning} class="input" bind:value={minutes} />
         <input
+            type="number"
+            min="0"
+            disabled={countdownRunning}
+            class="input"
+            bind:value={minutes}
+        />
+        <input
+            type="number"
+            min="0"
             disabled={countdownRunning}
             class="input mx-2"
             bind:value={increment}
         />
         <button
-            class="btn"
+            class="btn btn-soft btn-accent"
             onclick={() => (countdownRunning ? pause() : reset())}
             >{countdownRunning ? "pause" : "reset"}</button
         >

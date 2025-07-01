@@ -15,7 +15,7 @@
     onclick={() => {
         if (time > 0) onClick();
     }}
-    class="btn w-full flex-1 my-5 text-9xl"
+    class="btn w-full flex-1 my-5 text-8xl font-mono"
     class:rotate-180={rotated}
     class:btn-primary={active && time >= 10}
     class:btn-warning={active && time < 10 && time > 0}
@@ -24,6 +24,6 @@
     >{time <= 0 ? "0" : minutes}:{time < 10
         ? time <= 0
             ? "0"
-            : seconds.toFixed(1)
-        : seconds.toFixed(0)}</button
+            : seconds.toFixed(1).padStart(2, "0")
+        : seconds.toFixed(0).padStart(2, "0")}</button
 >
