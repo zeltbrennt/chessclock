@@ -72,7 +72,7 @@
     }
 </script>
 
-<div class="flex flex-col p-10 h-screen items-center justify-center">
+<div class="flex flex-col p-5 h-screen items-center justify-center">
     <ClockButton
         rotated={true}
         time={timeA}
